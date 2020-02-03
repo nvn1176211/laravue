@@ -1,0 +1,134 @@
+/* text color */
+.text-white{
+    color: white;
+}
+.text-red{
+    color: red;
+}
+
+/* background color */
+.blue-deep{
+    background-color: #367fa9;
+}
+.green-deep{
+    background-color: rgb(65, 184, 131);
+}
+
+/* size */
+.h-50{
+    height: 50px;
+}
+.h-100per{
+    height: 100%;
+}
+.w-50{
+    width: 50px;
+}
+
+/* margin */
+.mt-0{
+    margin-top: 0;
+}
+.m-0{
+    margin: 0;
+}
+.mr-15{
+    margin-right: 15px;
+}
+
+/* padding */
+.pr-15{
+    padding-right: 15px
+}
+.pl-10{
+    padding-left: 10px
+}
+.p-0{
+    padding: 0
+}
+
+/* flexbox */
+.perfect-center-ctn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// display style
+.d-none{
+    display: none;
+}
+
+/* styles */
+nav.nav-o1{
+    background-color: rgb(40, 115, 82);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 4px 4px grey;
+
+    div{
+        display: flex;
+        align-items: center;
+    }
+    a{
+        color: #cbbde2;
+        text-decoration: none;
+    }
+    a.active{
+        color: white;
+        font-weight: bold;
+    }
+    a.logo{
+        font-size: 1.5rem;
+        color: rgb(40, 115, 82);
+        background-color: #cbbde2;
+        padding: 0 4px;
+        border-radius: 3px;
+    }
+}
+aside.aside-o1{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-right: 1px solid #a8a8a8;
+
+    a{
+        color: rgba(0,0,0,.65);
+        text-decoration: none;
+        padding-bottom: 10px;
+    }
+    a.active{
+        color: black;
+        font-weight: bold;
+    }
+}
+footer.footer-o1{
+    background-color: rgb(40, 115, 82);
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    
+    a.logo{
+        font-size: 2rem;
+        color: rgb(40, 115, 82);
+        background-color: #cbbde2;
+        padding: 0 4px;
+        border-radius: 3px;
+        text-decoration: none;
+        margin-right: 20px;
+    }
+
+    p{
+        color: white;
+    }
+}
+div.middle-ctn{
+    display: flex;
+}
