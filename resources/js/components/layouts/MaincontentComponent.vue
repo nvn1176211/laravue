@@ -4,12 +4,15 @@
             <h1>
                 {{$store.state.client_config.page_title}}
             </h1>
-            <ol class="breadcrumb">
-                <li v-for="(item, index) in $store.state.client_config.breadcrumb" :key="index">
-                    <a :href="item.url" v-if="index + 1 != $store.state.client_config.breadcrumb.length">{{item.name}}</a>
+            <div>
+                <div v-for="(item, index) in $store.state.client_config.breadcrumb" :key="index">
+                    <a
+                        :href="item.url"
+                        v-if="index + 1 != $store.state.client_config.breadcrumb.length"
+                        >{{ item.name }}</a>
                     <span v-else>{{ item.name }}</span>
-                </li>
-            </ol>
+                </div>
+            </div>
         </section>
 
         <section>
