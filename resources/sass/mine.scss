@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 /* text color */
 .text-white{
     color: white;
@@ -90,7 +94,6 @@ nav.nav-o1{
 }
 aside.aside-o1{
     width: 15%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     padding: 15px;
@@ -112,8 +115,6 @@ footer.footer-o1{
     align-items: center;
     padding: 15px;
     width: 100%;
-    position: absolute;
-    bottom: 0;
     
     a.logo{
         font-size: 2rem;
