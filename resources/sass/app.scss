@@ -4,20 +4,7 @@
 // Variables
 @import 'variables';
 
-// Bootstrap
-// @import '~bootstrap/scss/bootstrap';
-
-// Bootstrap 3
-// @import '../adminlte/boostrap3/css/bootstrap.min.css';
-
-// AdminLTE v2.4.17
-// //select2
-// @import '../adminlte/select2.min.css';
-// @import '../adminlte/AdminLTE.min.css';
-// AdminLTE Skins. Choose a skin from the css/skins
-// folder instead of downloading all of them to reduce the load.
-// @import '../adminlte/_all-skins.min.css';
-//Font Awesome 4.7.0
-// @import '../adminlte/fontawesome4/css/font-awesome.min.css';
+@import '~bootstrap';
+@import '~bootstrap-vue';
 
 @import './mine.scss';

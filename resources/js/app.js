@@ -29,12 +29,14 @@ window.Vue = require('vue');
 import App from './App.vue';
 import store from './store';
 // import VueRouter from 'vue-router';
-// import BootstrapVue from 'bootstrap-vue'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
 
 window.axios = require('axios');
 
 // Vue.use(VueRouter)
-// Vue.use(BootstrapVue)
 
 // import postComposer from './components/contents/PostComposeComponent';
 

@@ -1,10 +1,10 @@
 <template>
   <aside class="aside-o1">
-    <a href class="active">Front End</a>
-    <a href>PHP</a>
-    <a href>Laravel</a>
-    <a href>CI</a>
-    <a href>Vue</a>
+    <span class="menu-item" @click="goTo('Front End', 'front_end', true)">Front End</span>
+    <span class="menu-item" @click="goTo('PHP', 'php', true)">PHP</span>
+    <span class="menu-item" @click="goTo('Laravel', 'laravel', true)">Laravel</span>
+    <span class="menu-item" @click="goTo('CI', 'ci', true)">CI</span>
+    <span class="menu-item" @click="goTo('Vue', 'vue', true)">Vue</span>
   </aside>
 </template>
 

@@ -39,6 +39,12 @@
 .mr-15{
     margin-right: 15px;
 }
+.mb-15{
+    margin-bottom: 15px;
+}
+.mt-15{
+    margin-top: 15px;
+}
 
 /* padding */
 .pr-15{
@@ -91,6 +97,14 @@ nav.nav-o1{
         padding: 0 4px;
         border-radius: 3px;
     }
+
+    span.menu-item{
+        color: #cbbde2;
+        cursor: pointer;
+    }
+    span.menu-item:hover{
+        color: white;
+    }
 }
 aside.aside-o1{
     width: 15%;
@@ -99,14 +113,13 @@ aside.aside-o1{
     padding: 15px;
     border-right: 1px solid #a8a8a8;
 
-    a{
+    span.menu-item{
         color: rgba(0,0,0,.65);
-        text-decoration: none;
         padding-bottom: 10px;
+        cursor: pointer;
     }
-    a.active{
+    span.menu-item:hover{
         color: black;
-        font-weight: bold;
     }
 }
 footer.footer-o1{
@@ -132,4 +145,15 @@ footer.footer-o1{
 }
 div.middle-ctn{
     display: flex;
+
+    div.main-content-ctn{
+        width: 85%;
+        padding: 15px;
+        
+        div.heading{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
 }

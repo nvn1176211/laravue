@@ -1,21 +1,20 @@
 <template>
-    <div>
-        <section>
+    <div class="main-content-ctn">
+        <div class="heading">
             <h1>
                 {{$store.state.client_config.page_title}}
             </h1>
             <div>
-                <div v-for="(item, index) in $store.state.client_config.breadcrumb" :key="index">
-                    <a
-                        :href="item.url"
+                <span v-for="(item, index) in $store.state.client_config.breadcrumb" :key="index">
+                    <span
                         v-if="index + 1 != $store.state.client_config.breadcrumb.length"
-                        >{{ item.name }}</a>
+                        >{{ item.name }} > </span>
                     <span v-else>{{ item.name }}</span>
-                </div>
+                </span>
             </div>
-        </section>
+        </div>
 
-        <section>
+        <div>
             <div v-if="$store.state.client_config.page_title == 'Post'">
                 <div>
                     <button class="btn btn-primary" v-on:click="hiddenPostBtn" v-if="showPostBtn">Post</button>
@@ -23,7 +22,7 @@
 
                 <PostComposer v-if="showPostCompose"></PostComposer>
             </div>
-        </section>
+        </div>
         <!-- /.content -->
     </div>
 </template>
