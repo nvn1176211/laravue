@@ -27,3 +27,4 @@ Route::get('/home', function () {
 
 Route::post('/post/create', 'PostController@create');
 Route::get('/post/get_post_types', 'PostController@getPostTypes');
+Route::post('/post/get_post_heading', 'PostController@getPostHeading');

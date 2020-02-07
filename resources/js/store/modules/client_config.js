@@ -7,6 +7,9 @@ const state = {
             'url': 'home'
         },
     ],
+    postTypes: [
+         
+    ]
 }
 
 const mutations = {

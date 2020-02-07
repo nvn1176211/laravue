@@ -26,4 +26,11 @@ class PostController extends Controller
         return $post_types;
     }
 
+    public function getPostHeading(Request $request){
+        $postType = $request->postType;
+
+        $posts = DB::table('posts')->select('id', 'type_id', 'heading', 'created_at', 'created_by', 'updated_at', 'updated_by')->where('type_id', $postType)->get();
+        return $posts;
+    }
+
 }

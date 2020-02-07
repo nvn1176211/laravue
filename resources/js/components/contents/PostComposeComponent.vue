@@ -8,6 +8,7 @@
     <b-form-input v-model="postHeading" placeholder="-- Post Heading --" class="mb-15"></b-form-input>
     <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
     <button type="button" @click="submit" class="btn btn-primary mt-15">Submit</button>
+    <button type="button" @click="reset" class="btn btn-danger mt-15">Reset</button>
   </div>
 </template>
 
@@ -66,6 +67,11 @@ export default {
           this.postHeadingError = postHeadingError;
           this.postContentError = postContentError;
         });
+    },
+    reset: function() {
+      this.postHeading = '';
+      this.postType = null;
+      this.editorData = '<p>Content of the editor.</p>';
     }
   },
   created: function() {

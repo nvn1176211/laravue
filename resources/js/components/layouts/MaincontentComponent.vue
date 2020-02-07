@@ -1,9 +1,9 @@
 <template>
     <div class="main-content-ctn">
         <div class="heading">
-            <h1>
+            <h2>
                 {{$store.state.client_config.page_title}}
-            </h1>
+            </h2>
             <div>
                 <span v-for="(item, index) in $store.state.client_config.breadcrumb" :key="index">
                     <span
