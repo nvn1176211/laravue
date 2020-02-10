@@ -157,3 +157,21 @@ div.middle-ctn{
         }
     }
 }
+div.loading-img-ctn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+    height:10rem;
+    background-color:gray;
+
+    span{
+        color: white;
+    }
+}
+div.post-heading-ctn{
+    display:flex;
+    flex-wrap: wrap;
+
+}

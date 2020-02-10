@@ -1,4 +1,5 @@
 const state = {
+    currentPostPage: '',
     postHeadings: [
 
     ]
@@ -6,7 +7,10 @@ const state = {
 
 const mutations = {
     addPostHeading: (state, v) => {
-        state.page_title = v;
+        state.postHeadings = v;
+    }, 
+    setCurrentPostPage: (state, v) => {
+        state.currentPostPage = v;
     }, 
 } 
 

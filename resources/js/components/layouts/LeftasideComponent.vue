@@ -20,6 +20,7 @@ export default {
         clear: clear
       });
       this.$store.commit("changePageTitle", name);
+      this.$store.commit("setCurrentPostPage", postType);
 
       axios({
         method: "post",
@@ -30,9 +31,8 @@ export default {
       })
         .then(response => {
           console.log(response.data); // eslint-disable-line no-console
-          
 
-          this.$store.state.posts.postHeadings = response.data;
+          this.$store.commit('addPostHeading', response.data);
         })
         .catch(error => {
           console.log(error); // eslint-disable-line no-console

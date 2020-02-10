@@ -15,7 +15,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session; 
 
 Route::get('/test', function () {
-    dd(DB::table('posts')->get());
+    $rUrl = "images/upload/php_logo_256x256.png";
+    $type = pathinfo($rUrl, PATHINFO_EXTENSION);
+    $imgContent = file_get_contents($rUrl);
+    $base64Img = 'data:image/' . $type . ';base64,' . base64_encode($imgContent);
+    echo($base64Img);die;
 });
 
 Route::get('/', function () {
