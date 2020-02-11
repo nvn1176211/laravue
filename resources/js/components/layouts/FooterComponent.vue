@@ -1,9 +1,9 @@
 <template>
     <footer class="footer-o1">
-        <a href class="logo">NVN</a>
-        <p>
+        <span class="logo mr-15">NVN</span>
+        <span class="footer-span">
         NVN Center. From <strong>2020</strong>
-        </p>
+        </span>
     </footer>
 </template>
 

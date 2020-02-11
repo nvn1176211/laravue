@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="css/app.css?v{{time()}}">
     </head>
 
-    <body class="m-0 h-100per">
+    <body>
         <div id="app">
 
     

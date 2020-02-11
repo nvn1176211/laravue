@@ -123,24 +123,15 @@ aside.aside-o1{
     }
 }
 footer.footer-o1{
-    background-color: rgb(40, 115, 82);
+    background-color: rgb(52, 58, 64);
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 15px;
     width: 100%;
     
-    a.logo{
-        font-size: 2rem;
-        color: rgb(40, 115, 82);
-        background-color: #cbbde2;
-        padding: 0 4px;
-        border-radius: 3px;
-        text-decoration: none;
-        margin-right: 20px;
-    }
-
-    p{
-        color: white;
+    span.footer-span{
+        color: rgba(255, 255, 255, 0.5);
     }
 }
 div.middle-ctn{
@@ -174,4 +165,17 @@ div.post-heading-ctn{
     display:flex;
     flex-wrap: wrap;
 
+}
+
+.logo{
+    font-size: 1.5rem;
+    color: rgb(40, 115, 82);
+    background-color: #cbbde2;
+    padding: 0 4px;
+    border-radius: 3px;
+    text-decoration: none;
+}
+.sidebar-o1{
+    border-right: 1px solid rgba(0,0,0,.1);
+    height: 100vh;
 }
