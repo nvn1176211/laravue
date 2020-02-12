@@ -25,6 +25,9 @@
 .h-100per{
     height: 100%;
 }
+.mh-100vh{
+    min-height: 100vh;
+}
 .w-50{
     width: 50px;
 }
@@ -106,22 +109,6 @@ nav.nav-o1{
         color: white;
     }
 }
-aside.aside-o1{
-    width: 15%;
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    border-right: 1px solid #a8a8a8;
-
-    span.menu-item{
-        color: rgba(0,0,0,.65);
-        padding-bottom: 10px;
-        cursor: pointer;
-    }
-    span.menu-item:hover{
-        color: black;
-    }
-}
 footer.footer-o1{
     background-color: rgb(52, 58, 64);
     display: flex;
@@ -137,16 +124,7 @@ footer.footer-o1{
 div.middle-ctn{
     display: flex;
 
-    div.main-content-ctn{
-        width: 85%;
-        padding: 15px;
-        
-        div.heading{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-    }
+
 }
 div.loading-img-ctn{
     display: flex;
