@@ -45,6 +45,9 @@
 .mb-15{
     margin-bottom: 15px;
 }
+.mb-10{
+    margin-bottom: 10px;
+}
 .mt-15{
     margin-top: 15px;
 }
@@ -131,8 +134,8 @@ div.loading-img-ctn{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 20rem;
-    height:10rem;
+    width: 350px;
+    height: 200px;
     background-color:gray;
 
     span{

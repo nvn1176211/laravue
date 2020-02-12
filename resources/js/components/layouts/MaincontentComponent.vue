@@ -1,6 +1,6 @@
 <template>
-  <b-col sm="12" md="9" class="main-content-ctn">
-    <div class="heading">
+  <b-col sm="12" md="9" lg="10" class="main-content-ctn">
+    <div class="heading mb-10">
       <h2>{{$store.state.client_config.page_title}}</h2>
       <div>
         <span v-for="(item, index) in $store.state.client_config.breadcrumb" :key="index">

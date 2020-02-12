@@ -1,5 +1,5 @@
 <template>
-  <b-col sm="12" md="3" class="aside-o1">
+  <b-col cols="12" md="3" lg="2" class="aside-o1">
     <b-form-input v-model="search" placeholder="Search"></b-form-input>
     <span class="menu-item" @click="goTo('Front End', 'front_end', true, 1)">Front End</span>
     <span class="menu-item" @click="goTo('PHP', 'php', true, 2)">PHP</span>
@@ -45,7 +45,12 @@ export default {
           console.log(error); // eslint-disable-line no-console
         });
     }
-  }
+  },
+  computed: {
+    showSearch: function(){
+      console.log(this.search);
+    }
+  },
 };
 </script>
 
