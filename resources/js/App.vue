@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @click="testClick">
     <layoutHeader />
     <middle />
     <layoutFooter />
@@ -28,7 +28,15 @@ export default {
     return {
     };
   },
+  methods: {
+    testClick: function(event){
+      console.log(event.target.id);
+    }
+  }
 };
 </script>
 
+<style scoped>
+
+</style>
 

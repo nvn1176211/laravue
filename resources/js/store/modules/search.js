@@ -3,7 +3,7 @@ const state = {
         'php',
         'laravel',
         'ci',
-        'front_end',
+        'front end',
         'vue',
     ]
 }

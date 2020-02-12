@@ -1,8 +1,8 @@
 <template>
   <b-col cols="12" md="3" lg="2" class="aside-o1">
     <b-form-input v-model="search" placeholder="Search"></b-form-input>
-    <div class="test-block-1">
-      <!-- <p v-for="(item, index) in $store.state.search.searchObject" :key="index">{{item}}</p> -->
+    <div class="test-block-1" v-if="searchResult" id="aside-search-result-view">
+      <p v-for="(item, index) in searchResult" :key="index">{{item}}</p>
     </div>
     <span class="menu-item" @click="goTo('Front End', 'front_end', true, 1)">Front End</span>
     <span class="menu-item" @click="goTo('PHP', 'php', true, 2)">PHP</span>
@@ -18,7 +18,8 @@ export default {
   name: "layoutLeftaside",
   data: function() {
     return {
-      search: ""
+      search: "",
+      searchResult: '',
     };
   },
   methods: {
@@ -49,9 +50,21 @@ export default {
         });
     }
   },
-  computed: {
-    showSearch: function(){
-      console.log(this.search);
+  watch: {
+    search: function(val){
+      if(val === ''){
+        this.searchResult = '';
+        return;
+      };
+      let searchObject = this.$store.state.search.searchObject;
+      let searchResult = [];
+      searchObject.forEach((item, index)=>{
+        console.log(item, val, item.indexOf(val));
+        if( item.indexOf(val) >= 0 ){
+          searchResult.push(item);
+        }
+      });
+      this.searchResult = searchResult;
     }
   },
 };
@@ -88,6 +101,7 @@ div.test-block-1{
 div.test-block-1 > p{
   padding: 10px 15px;
   margin: 0;
+  cursor: pointer;
 }
 div.test-block-1 > p:hover{
   background-color: #e8ffee;
@@ -95,7 +109,7 @@ div.test-block-1 > p:hover{
 
 @media only screen and (min-width: 768px) {
   div.test-block-1 {
-    width: 200%;
+    width: 40vw;
     height: 40vh;
   }
 }
