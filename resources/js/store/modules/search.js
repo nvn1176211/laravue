@@ -1,5 +1,5 @@
 const state = {
-    searchObject = [
+    searchObject: [
         'php',
         'laravel',
         'ci',
