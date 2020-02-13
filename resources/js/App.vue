@@ -26,6 +26,7 @@
     <div class="svg-ctn-1" v-else>
       <svg class="modal-svg">
         <!-- <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3" /> -->
+        <!-- <line  x1="0%" y1="50" x2="100%" y2="50" stroke-dashoffset='100' class="sketch-animation-1" /> -->
         <line  x1="0%" y1="50" x2="100%" y2="50" class="sketch-animation-1" />
       </svg>
     </div>
@@ -76,11 +77,12 @@ div.svg-ctn-1 {
   width: 100%;
   height: 100%;
 }
-.svg-ctn-1 {
-  stroke: pink;
-  stroke-width: 2px;
+.sketch-animation-1 {
+  stroke: green;
+  stroke-dasharray: 100%;
   stroke-dashoffset: 100%;
-  animation: sketchIn 2s;
+  
+  /* animation: sketchIn 2s; */
 }
 /* 
 @keyframes sketchIn {
