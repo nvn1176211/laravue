@@ -35,8 +35,8 @@ export default {
   mounted: function() {
     setTimeout(() => {
       this.lpiaStyle = {
-        textShadow: '1vw 1vw 4vw, -1vw -1vw 4vw',
-        opacity: 0,
+        textShadow: "1vw 1vw 4vw, -1vw -1vw 4vw",
+        opacity: 0
       };
       this.nvnBlock1 = {
         transform: "translate(10vw,0) rotate(90deg)"

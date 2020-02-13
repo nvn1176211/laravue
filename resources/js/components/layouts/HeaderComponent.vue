@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="lg" type="dark" variant="dark">
+  <b-navbar toggleable="lg" type="dark" variant="dark" class="header-nav-1">
     <b-navbar-brand href="#">
       <span class="logo mr-15">NVN</span>
     </b-navbar-brand>
