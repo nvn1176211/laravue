@@ -1,8 +1,10 @@
 <template>
   <b-col cols="12" md="3" lg="2" class="aside-o1">
     <b-form-input v-model="search" placeholder="Search"></b-form-input>
-    <div class="test-block-1" v-if="searchResult" id="aside-search-result-view">
-      <p v-for="(item, index) in searchResult" :key="index">{{item}}</p>
+    <div class="test-block-1 aside-search-result-view" v-if="$store.state.search.searchResult">
+      <div v-for="(item, index) in $store.state.search.searchResult" :key="index">
+        <p class="aside-search-result-view"  @click="goTo2(item.heading, item.url, true, item.postType)">{{item.heading}}</p>
+      </div>
     </div>
     <span class="menu-item" @click="goTo('Front End', 'front_end', true, 1)">Front End</span>
     <span class="menu-item" @click="goTo('PHP', 'php', true, 2)">PHP</span>
@@ -19,7 +21,6 @@ export default {
   data: function() {
     return {
       search: "",
-      searchResult: '',
     };
   },
   methods: {
@@ -41,8 +42,33 @@ export default {
         }
       })
         .then(response => {
-          console.log(response.data); // eslint-disable-line no-console
+          this.$store.commit("addPostHeading", response.data);
+        })
+        .catch(error => {
+          console.log(error); // eslint-disable-line no-console
+        });
+    },
+    goTo2: function(name, url, clear, postType = "") {
+      this.$store.commit('changeSearchResult', '');
+      this.search = "";
+      
+      this.$store.commit("addBreadcrumb", {
+        name: name,
+        url: url,
+        clear: clear
+      });
+      this.$store.commit("changePageTitle", name);
+      this.$store.commit("setCurrentPostPage", postType);
 
+      axios({
+        method: "post",
+        url:
+          this.$store.state.client_config.baseApiUrl + "post/get_post_heading",
+        data: {
+          postType: postType
+        }
+      })
+        .then(response => {
           this.$store.commit("addPostHeading", response.data);
         })
         .catch(error => {
@@ -53,18 +79,19 @@ export default {
   watch: {
     search: function(val){
       if(val === ''){
-        this.searchResult = '';
+        this.$store.commit('changeSearchResult', '');
         return;
       };
       let searchObject = this.$store.state.search.searchObject;
       let searchResult = [];
       searchObject.forEach((item, index)=>{
-        console.log(item, val, item.indexOf(val));
-        if( item.indexOf(val) >= 0 ){
+        let text1 = item.heading.trim().toLowerCase();
+        val = val.trim().toLowerCase();
+        if( text1.indexOf(val) >= 0 ){
           searchResult.push(item);
         }
       });
-      this.searchResult = searchResult;
+      this.$store.commit('changeSearchResult', searchResult);
     }
   },
 };
@@ -98,12 +125,12 @@ div.test-block-1{
   border: 1px solid rgb(168, 168, 168);
 }
 
-div.test-block-1 > p{
+div.test-block-1  p{
   padding: 10px 15px;
   margin: 0;
   cursor: pointer;
 }
-div.test-block-1 > p:hover{
+div.test-block-1  p:hover{
   background-color: #e8ffee;
 }
 
