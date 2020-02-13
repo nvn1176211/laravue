@@ -79,19 +79,18 @@ div.svg-ctn-1 {
 }
 .sketch-animation-1 {
   stroke: green;
-  stroke-dasharray: 100%;
-  stroke-dashoffset: 100%;
-  
-  /* animation: sketchIn 2s; */
+  stroke-dasharray: 100vw;
+  stroke-dashoffset: 100vw;
+  animation: sketchIn 2s infinite;
 }
-/* 
+
 @keyframes sketchIn {
   0% {
-    stroke-dashoffset: 100%;
+    stroke-dashoffset: 100vw;
   }
   100% {
-    stroke-dashoffset: 0%;
+    stroke-dashoffset: 0vw;
   }
-} */
+}
 </style>
 
