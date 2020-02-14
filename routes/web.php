@@ -14,12 +14,23 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session; 
 
+Route::post('/users/login', 'UsersController@login');
+
+
 Route::get('/test', function () {
-    $rUrl = "images/upload/php_logo_256x256.png";
-    $type = pathinfo($rUrl, PATHINFO_EXTENSION);
-    $imgContent = file_get_contents($rUrl);
-    $base64Img = 'data:image/' . $type . ';base64,' . base64_encode($imgContent);
-    echo($base64Img);die;
+    // $rUrl = "images/upload/php_logo_256x256.png";
+    // $type = pathinfo($rUrl, PATHINFO_EXTENSION);
+    // $imgContent = file_get_contents($rUrl);
+    // $base64Img = 'data:image/' . $type . ';base64,' . base64_encode($imgContent);
+    // echo($base64Img);die;
+
+
+    // dd(Auth::check());
+    
+    dd( Auth::attempt([
+        'username' => 'admin1',
+        'password' => 'admin1',
+    ]) );
 });
 
 Route::get('/', function () {
