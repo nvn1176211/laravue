@@ -32,6 +32,12 @@ export default {
         clear: clear
       });
       this.$store.commit("changePageTitle", name);
+
+      if(url == "post"){
+        this.$store.commit('setPostBtnVisibility', true);
+        this.$store.commit('setPostComposeVisibility', false);
+        this.$store.commit("setCurrentPostPage", '');
+      }
     }
   }
 };

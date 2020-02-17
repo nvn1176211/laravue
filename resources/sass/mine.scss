@@ -111,6 +111,14 @@ div.loading-img-ctn{
         color: white;
     }
 }
+.loaded-img-ctn{
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+    border-left: 1px solid rgba(0, 0, 0, 0.125);
+    border-right: 1px solid rgba(0, 0, 0, 0.125);
+    width: 350px;
+    height: 200px;
+    background-color:white;
+}
 div.post-heading-ctn{
     display:flex;
     flex-wrap: wrap;

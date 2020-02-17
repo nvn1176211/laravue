@@ -10,7 +10,7 @@ const state = {
     postTypes: [
          
     ],
-    isLandingPage: true,
+    isLandingPage: false,
 }
 
 const mutations = {

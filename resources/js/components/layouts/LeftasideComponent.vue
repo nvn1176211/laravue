@@ -42,7 +42,11 @@ export default {
         }
       })
         .then(response => {
-          this.$store.commit("addPostHeading", response.data);
+          let arr = response.data;
+          for(let i = 0, l = arr.length;i<l;i++){
+            arr[i].imgContent = '';
+          }
+          this.$store.commit("addPostHeading", arr);
         })
         .catch(error => {
           console.log(error); // eslint-disable-line no-console
@@ -69,7 +73,11 @@ export default {
         }
       })
         .then(response => {
-          this.$store.commit("addPostHeading", response.data);
+          let arr = response.data;
+          for(let i = 0, l = arr.length;i<l;i++){
+            arr[i].imgContent = '';
+          }
+          this.$store.commit("addPostHeading", arr);
         })
         .catch(error => {
           console.log(error); // eslint-disable-line no-console

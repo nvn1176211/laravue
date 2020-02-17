@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session; 
 
 Route::post('/users/login', 'UsersController@login');
+Route::post('/images/download', 'ImagesController@download');
 
 
 Route::get('/test', function () {

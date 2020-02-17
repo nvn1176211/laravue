@@ -12,9 +12,9 @@
 
     <div v-if="$store.state.client_config.page_title == 'Post'">
       <div>
-        <button class="btn btn-primary" v-on:click="hiddenPostBtn" v-if="showPostBtn">Post</button>
+        <button class="btn btn-primary" v-on:click="hiddenPostBtn" v-if="$store.state.posts.showPostBtn">New Post</button>
       </div>
-      <PostComposer v-if="showPostCompose"></PostComposer>
+      <PostComposer v-if="$store.state.posts.showPostCompose"></PostComposer>
     </div>
 
     <PostHeading v-if="$store.state.posts.currentPostPage !== ''"></PostHeading>
@@ -32,7 +32,6 @@ export default {
   },
   data: function() {
     return {
-      showPostBtn: true,
       showPostCompose: false
     };
   },
@@ -41,10 +40,10 @@ export default {
       window.history.length > 1 ? this.$router.go(-1) : this.$router.push("/");
     },
     hiddenPostBtn: function() {
-      this.showPostBtn = false;
-      this.showPostCompose = true;
+      this.$store.commit('setPostBtnVisibility', false);
+      this.$store.commit('setPostComposeVisibility', true);
     }
-  }
+  },
 };
 </script>
 

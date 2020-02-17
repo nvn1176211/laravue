@@ -1,7 +1,7 @@
 <template>
   <div @click="closeSearchResult1" v-on:keyup.esc="closeSearchResult2">
     <layoutHeader v-if="!$store.state.client_config.isLandingPage" />
-    <headerLandingPage v-if="$store.state.client_config.isLandingPage" />
+    <headerLandingPage v-else />
     <middle />
     <layoutFooter />
   </div>
