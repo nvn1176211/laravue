@@ -1,13 +1,13 @@
 <template>
   <div class="post-heading-ctn">
-    <p>{{test123}}</p>
+    <!-- <p>{{test123}}</p> -->
     <b-container>
       <b-row>
         <b-col v-for="(item, index) in $store.state.posts.postHeadings" :key="index" class="mb-15">
           <div v-if="item.imgContent">
             <img
               class="loaded-img-ctn"
-              src="http://localhost:8080/laravue/public/images/upload/vue_logo_400x400.png"
+              :src="item.imgContent"
               alt="heading image"
             />
           </div>
@@ -29,42 +29,38 @@
 export default {
   name: "postComposer",
   data: function() {
-    return {};
+    return {
+    };
   },
   computed: {
-    test123: function() {
-      // watch this.$store.state.posts.postHeadings
-      let arr = this.$store.state.posts.postHeadings;
+    // test123: function() {
+    //   // watch this.$store.state.posts.postHeadings
+    //   let arr = this.$store.state.posts.postHeadings;
 
-      //have same request problem, can't resolve because asynchronous
+    //   //same request problem, can't resolve because asynchronous
 
-      let result = [];
-      for (let i = 0, l = arr.length; i < l; i++) {
-        axios({
-          method: "post",
-          url: this.$store.state.client_config.baseApiUrl + "images/download",
-          data: {
-            url: arr[i].heading_img_url
-          }
-        })
-          .then(response => {
-            result.push({
-              index: i,
-              url: arr[i].heading_img_url
-            });
-            arr[i].imgContent = response.data;
-          })
-          .catch(error => {
-            console.log(error); // eslint-disable-line no-console
-          });
-      }
+    //   for (let i = 0, l = arr.length; i < l; i++) {
+    //     axios({
+    //       method: "post",
+    //       url: this.$store.state.client_config.baseApiUrl + "images/download",
+    //       data: {
+    //         url: arr[i].heading_img_url
+    //       }
+    //     })
+    //       .then(response => {
+    //         let param = {
+    //           postPage: arr[i].type_id,
+    //           headingId: arr[i].id,
+    //           img64: response.data,
+    //         }
+    //         this.$store.commit("addPostHeadingImg64", param);
+    //       })
+    //       .catch(error => {
+    //         console.log(error); // eslint-disable-line no-console
+    //       });
+    //   }
 
-      // console.log(arr);
-
-      // this.$store.commit("updatePostHeading", arr);
-
-      //ignore same url
-    }
+    // }
   }
 };
 </script>

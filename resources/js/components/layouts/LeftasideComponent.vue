@@ -3,7 +3,10 @@
     <b-form-input v-model="search" placeholder="Search"></b-form-input>
     <div class="test-block-1 aside-search-result-view" v-if="$store.state.search.searchResult">
       <div v-for="(item, index) in $store.state.search.searchResult" :key="index">
-        <p class="aside-search-result-view"  @click="goTo2(item.heading, item.url, true, item.postType)">{{item.heading}}</p>
+        <p
+          class="aside-search-result-view"
+          @click="goTo2(item.heading, item.url, true, item.postType)"
+        >{{item.heading}}</p>
       </div>
     </div>
     <span class="menu-item" @click="goTo('Front End', 'front_end', true, 1)">Front End</span>
@@ -20,7 +23,7 @@ export default {
   name: "layoutLeftaside",
   data: function() {
     return {
-      search: "",
+      search: ""
     };
   },
   methods: {
@@ -43,19 +46,38 @@ export default {
       })
         .then(response => {
           let arr = response.data;
-          for(let i = 0, l = arr.length;i<l;i++){
-            arr[i].imgContent = '';
+          for (let i = 0, l = arr.length; i < l; i++) {
+            arr[i].imgContent = "";
           }
           this.$store.commit("addPostHeading", arr);
+
+          for (let i = 0, l = arr.length; i < l; i++) {
+            axios({
+              method: "post",
+              url:
+                this.$store.state.client_config.baseApiUrl + "images/download",
+              data: {
+                url: arr[i].heading_img_url
+              }
+            })
+              .then(response => {
+                arr[i].imgContent = response.data;
+                this.$store.commit("addPostHeading", arr);
+              })
+              .catch(error => {
+                console.log(error); // eslint-disable-line no-console
+              });
+
+          }
         })
         .catch(error => {
           console.log(error); // eslint-disable-line no-console
         });
     },
     goTo2: function(name, url, clear, postType = "") {
-      this.$store.commit('changeSearchResult', '');
+      this.$store.commit("changeSearchResult", "");
       this.search = "";
-      
+
       this.$store.commit("addBreadcrumb", {
         name: name,
         url: url,
@@ -74,8 +96,8 @@ export default {
       })
         .then(response => {
           let arr = response.data;
-          for(let i = 0, l = arr.length;i<l;i++){
-            arr[i].imgContent = '';
+          for (let i = 0, l = arr.length; i < l; i++) {
+            arr[i].imgContent = "";
           }
           this.$store.commit("addPostHeading", arr);
         })
@@ -85,23 +107,23 @@ export default {
     }
   },
   watch: {
-    search: function(val){
-      if(val === ''){
-        this.$store.commit('changeSearchResult', '');
+    search: function(val) {
+      if (val === "") {
+        this.$store.commit("changeSearchResult", "");
         return;
-      };
+      }
       let searchObject = this.$store.state.search.searchObject;
       let searchResult = [];
-      searchObject.forEach((item, index)=>{
+      searchObject.forEach((item, index) => {
         let text1 = item.heading.trim().toLowerCase();
         val = val.trim().toLowerCase();
-        if( text1.indexOf(val) >= 0 ){
+        if (text1.indexOf(val) >= 0) {
           searchResult.push(item);
         }
       });
-      this.$store.commit('changeSearchResult', searchResult);
+      this.$store.commit("changeSearchResult", searchResult);
     }
-  },
+  }
 };
 </script>
 
@@ -123,7 +145,7 @@ export default {
   color: black;
 }
 
-div.test-block-1{
+div.test-block-1 {
   padding: 15px 0;
   background-color: white;
   width: 100%;
@@ -133,12 +155,12 @@ div.test-block-1{
   border: 1px solid rgb(168, 168, 168);
 }
 
-div.test-block-1  p{
+div.test-block-1 p {
   padding: 10px 15px;
   margin: 0;
   cursor: pointer;
 }
-div.test-block-1  p:hover{
+div.test-block-1 p:hover {
   background-color: #e8ffee;
 }
 
