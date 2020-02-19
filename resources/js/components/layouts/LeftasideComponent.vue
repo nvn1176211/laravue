@@ -53,25 +53,27 @@ export default {
             postType: postType,
             data: arr,
           });
+          // this.$store.commit("ctest123", {
+          //   5: [1,2,3],
+          // });
 
-          for (let i = 0, l = arr.length; i < l; i++) {
-            axios({
-              method: "post",
-              url:
-                this.$store.state.client_config.baseApiUrl + "images/download",
-              data: {
-                url: arr[i].heading_img_url
-              }
-            })
-              .then(response => {
-                arr[i].imgContent = response.data;
-                this.$store.commit("addPostHeading", arr);
-              })
-              .catch(error => {
-                console.log(error); // eslint-disable-line no-console
-              });
-
-          }
+          // for (let i = 0, l = arr.length; i < l; i++) {
+          //   axios({
+          //     method: "post",
+          //     url:
+          //       this.$store.state.client_config.baseApiUrl + "images/download",
+          //     data: {
+          //       url: arr[i].heading_img_url
+          //     }
+          //   })
+          //     .then(response => {
+          //       arr[i].imgContent = response.data;
+          //       this.$store.commit("addPostHeading", arr);
+          //     })
+          //     .catch(error => {
+          //       console.log(error); // eslint-disable-line no-console
+          //     });
+          // }
         })
         .catch(error => {
           console.log(error); // eslint-disable-line no-console

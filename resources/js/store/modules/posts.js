@@ -21,7 +21,7 @@ const mutations = {
     }, 
     
     addPostHeading: (state, v) => {
-        state.postHeadings[v.postType] = v.data;
+        Vue.set(state.postHeadings, v.postType, v.data);
     }, 
 
     updatePostHeading: (state, v) => {
