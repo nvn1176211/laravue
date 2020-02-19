@@ -49,7 +49,10 @@ export default {
           for (let i = 0, l = arr.length; i < l; i++) {
             arr[i].imgContent = "";
           }
-          this.$store.commit("addPostHeading", arr);
+          this.$store.commit("addPostHeading", {
+            postType: postType,
+            data: arr,
+          });
 
           for (let i = 0, l = arr.length; i < l; i++) {
             axios({
@@ -99,7 +102,10 @@ export default {
           for (let i = 0, l = arr.length; i < l; i++) {
             arr[i].imgContent = "";
           }
-          this.$store.commit("addPostHeading", arr);
+          this.$store.commit("addPostHeading", {
+            postType: postType,
+            data: arr,
+          });
         })
         .catch(error => {
           console.log(error); // eslint-disable-line no-console

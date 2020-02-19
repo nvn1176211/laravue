@@ -1,11 +1,10 @@
 const state = {
     currentPostPage: '',
-    postHeadings: [
-
-    ],
+    postHeadings: {},
     showPostBtn: false,
     showPostCompose: false,
     image64: {},
+    test123: {1: [1,23,3], 2: [1,2,3]},
 }
 
 const mutations = {
@@ -22,7 +21,7 @@ const mutations = {
     }, 
     
     addPostHeading: (state, v) => {
-        state.postHeadings = v;
+        state.postHeadings[v.postType] = v.data;
     }, 
 
     updatePostHeading: (state, v) => {

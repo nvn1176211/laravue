@@ -2,8 +2,10 @@
   <div class="post-heading-ctn">
 
     <!-- SAVE -->
-    
-    <b-container>
+    <p>{{ $store.state.posts.currentPostPage }}</p>
+    <p>{{ $store.state.posts.test123 }}</p>
+    <p>{{ $store.state.posts.postHeadings }}</p>
+    <!-- <b-container>
       <b-row>
         <b-col cols="12" lg="6" v-for="(item, index) in $store.state.posts.postHeadings" :key="index" class="mb-15">
           <div v-if="item.imgContent">
@@ -23,7 +25,7 @@
           </b-card>
         </b-col>
       </b-row>
-    </b-container>
+    </b-container>   -->
   </div>
 </template>
 
