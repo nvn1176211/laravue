@@ -9,23 +9,17 @@ const state = {
 
 const mutations = {
     /**
-     * param style: v = {postPage: ..., headingId: ..., img64: ...,}
+     * param style: v = {postType: ..., data: ...,}
      */
-    addPostHeadingImg64: (state, v) => {
-        if( state.image64[v.postPage] ){
-            state.image64[v.postPage][v.headingId] = v.img64;
-        }else{
-            state.image64[v.postPage] = {};
-            state.image64[v.postPage][v.headingId] = v.img64;
-        }
-    }, 
-    
     addPostHeading: (state, v) => {
         Vue.set(state.postHeadings, v.postType, v.data);
     }, 
 
-    updatePostHeading: (state, v) => {
-       state.postHeadings = v;
+    /**
+     * param style: v = {postId: ..., postContent: ...,}
+     */
+    addPostContent: (state, v) => {
+        Vue.set(state.postHeadings[state.currentPostPage], v.postType, v.data);
     }, 
     setCurrentPostPage: (state, v) => {
         state.currentPostPage = v;

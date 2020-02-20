@@ -5,15 +5,15 @@
       <div v-for="(item, index) in $store.state.search.searchResult" :key="index">
         <p
           class="aside-search-result-view"
-          @click="goTo2(item.heading, item.url, true, item.postType)"
+          @click="goTo(item.heading, item.url, true, item.postType, true)"
         >{{item.heading}}</p>
       </div>
     </div>
-    <span class="menu-item" @click="goTo('Front End', 'front_end', true, 1)">Front End</span>
-    <span class="menu-item" @click="goTo('PHP', 'php', true, 2)">PHP</span>
-    <span class="menu-item" @click="goTo('Laravel', 'laravel', true, 3)">Laravel</span>
-    <span class="menu-item" @click="goTo('CI', 'ci', true, 4)">CI</span>
-    <span class="menu-item" @click="goTo('Vue', 'vue', true, 5)">Vue</span>
+    <span class="menu-item" :class="{active: $store.state.posts.currentPostPage == 1}" @click="goTo('Front End', 'front_end', true, 1)">Front End</span>
+    <span class="menu-item" :class="{active: $store.state.posts.currentPostPage == 2}" @click="goTo('PHP', 'php', true, 2)">PHP</span>
+    <span class="menu-item" :class="{active: $store.state.posts.currentPostPage == 3}" @click="goTo('Laravel', 'laravel', true, 3)">Laravel</span>
+    <span class="menu-item" :class="{active: $store.state.posts.currentPostPage == 4}" @click="goTo('CI', 'ci', true, 4)">CI</span>
+    <span class="menu-item" :class="{active: $store.state.posts.currentPostPage == 5}" @click="goTo('Vue', 'vue', true, 5)">Vue</span>
   </b-col>
 </template>
 
@@ -27,7 +27,12 @@ export default {
     };
   },
   methods: {
-    goTo: function(name, url, clear, postType = "") {
+    goTo: function(name, url, clear, postType = "", isSearch = false) {
+      if (isSearch) {
+        this.$store.commit("changeSearchResult", "");
+        this.search = "";
+      }
+
       this.$store.commit("addBreadcrumb", {
         name: name,
         url: url,
@@ -35,6 +40,10 @@ export default {
       });
       this.$store.commit("changePageTitle", name);
       this.$store.commit("setCurrentPostPage", postType);
+
+      if(this.$store.state.posts.postHeadings[postType]){
+        return;
+      }
 
       axios({
         method: "post",
@@ -51,68 +60,34 @@ export default {
           }
           this.$store.commit("addPostHeading", {
             postType: postType,
-            data: arr,
+            data: arr
           });
-          // this.$store.commit("ctest123", {
-          //   5: [1,2,3],
-          // });
 
-          // for (let i = 0, l = arr.length; i < l; i++) {
-          //   axios({
-          //     method: "post",
-          //     url:
-          //       this.$store.state.client_config.baseApiUrl + "images/download",
-          //     data: {
-          //       url: arr[i].heading_img_url
-          //     }
-          //   })
-          //     .then(response => {
-          //       arr[i].imgContent = response.data;
-          //       this.$store.commit("addPostHeading", arr);
-          //     })
-          //     .catch(error => {
-          //       console.log(error); // eslint-disable-line no-console
-          //     });
-          // }
+          for (let i = 0, l = arr.length; i < l; i++) {
+            axios({
+              method: "post",
+              url:
+                this.$store.state.client_config.baseApiUrl + "images/download",
+              data: {
+                url: arr[i].heading_img_url
+              }
+            })
+              .then(response => {
+                arr[i].imgContent = response.data;
+                this.$store.commit("addPostHeading", {
+                  postType: postType,
+                  data: arr
+                });
+              })
+              .catch(error => {
+                console.log(error);
+              });
+          }
         })
         .catch(error => {
           console.log(error); // eslint-disable-line no-console
         });
     },
-    goTo2: function(name, url, clear, postType = "") {
-      this.$store.commit("changeSearchResult", "");
-      this.search = "";
-
-      this.$store.commit("addBreadcrumb", {
-        name: name,
-        url: url,
-        clear: clear
-      });
-      this.$store.commit("changePageTitle", name);
-      this.$store.commit("setCurrentPostPage", postType);
-
-      axios({
-        method: "post",
-        url:
-          this.$store.state.client_config.baseApiUrl + "post/get_post_heading",
-        data: {
-          postType: postType
-        }
-      })
-        .then(response => {
-          let arr = response.data;
-          for (let i = 0, l = arr.length; i < l; i++) {
-            arr[i].imgContent = "";
-          }
-          this.$store.commit("addPostHeading", {
-            postType: postType,
-            data: arr,
-          });
-        })
-        .catch(error => {
-          console.log(error); // eslint-disable-line no-console
-        });
-    }
   },
   watch: {
     search: function(val) {
@@ -151,6 +126,10 @@ export default {
 }
 .aside-o1 span.menu-item:hover {
   color: black;
+}
+.aside-o1 span.active {
+  color: black;
+  font-weight: bolder;
 }
 
 div.test-block-1 {
