@@ -62,18 +62,17 @@ export default {
             postType: postType,
             data: arr
           });
-
-          for (let i = 0, l = arr.length; i < l; i++) {
+          for (const [postId, data] of Object.entries(arr)) {
             axios({
               method: "post",
               url:
                 this.$store.state.client_config.baseApiUrl + "images/download",
               data: {
-                url: arr[i].heading_img_url
+                url: data.heading_img_url
               }
             })
               .then(response => {
-                arr[i].imgContent = response.data;
+                arr[postId].imgContent = response.data;
                 this.$store.commit("addPostHeading", {
                   postType: postType,
                   data: arr
