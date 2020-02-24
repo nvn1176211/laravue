@@ -41,7 +41,7 @@ export default {
       this.$store.commit("changePageTitle", name);
       this.$store.commit("setCurrentPostPage", postType);
 
-      if(this.$store.state.posts.postHeadings[postType]){
+      if(this.$store.state.posts.posts[postType]){
         return;
       }
 
@@ -55,9 +55,12 @@ export default {
       })
         .then(response => {
           let arr = response.data;
-          for (let i = 0, l = arr.length; i < l; i++) {
-            arr[i].imgContent = "";
-          }
+
+          Object.keys(arr).forEach((item, index) =>{
+            arr[item].imgContent = "";
+            arr[item].postContent = "";
+          });
+
           this.$store.commit("addPostHeading", {
             postType: postType,
             data: arr

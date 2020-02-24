@@ -75,6 +75,18 @@
     display: none;
 }
 
+
+//fake elements
+.fake-link-1{
+    color: #3490dc;
+    text-decoration: none;
+    cursor: pointer;
+}
+.fake-link-1:hover{
+    color: #1d68a7;
+    text-decoration: none;
+}
+
 /* styles */
 .header-nav-1{
     height: 60px;

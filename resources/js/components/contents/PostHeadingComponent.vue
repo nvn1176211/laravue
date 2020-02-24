@@ -5,7 +5,7 @@
         <b-col
           cols="12"
           lg="6"
-          v-for="(item, index) in $store.state.posts.postHeadings[$store.state.posts.currentPostPage]"
+          v-for="(item, index) in $store.state.posts.posts[$store.state.posts.currentPostPage]"
           :key="index"
           class="mb-15"
         >
@@ -18,7 +18,7 @@
           </div>
           <b-card :title="item.heading" style="width: 350px;height: 200px" class="mb-2">
             <b-card-text>{{item.overall}}</b-card-text>
-            <a href="#" class="card-link rp-p" @click="toDetail(item.id)">More</a>
+            <span class="fake-link-1 rp-p" @click="toDetail(item.id)">More</span>
           </b-card>
         </b-col>
       </b-row>
@@ -45,6 +45,7 @@ export default {
       })
         .then(response => {
           let postDetail = response.data.content;
+          this.$store.commit('changeCurrentPostDetailId', postId);
           this.$store.commit('addPostContent', {
             postId: postId,
             postContent: postDetail,

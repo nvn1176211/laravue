@@ -1,28 +1,39 @@
 const state = {
+    isInPostHeading: '',
     currentPostPage: '',
-    postHeadings: {},
+    currentPostDetailId: '',
+    posts: {},
     showPostBtn: false,
     showPostCompose: false,
-    image64: {},
-    test123: {1: [1,23,3], 2: [1,2,3]},
 }
 
 const mutations = {
     /**
+     * param style: v = primitive value
+     */
+    changeCurrentPostDetailId: (state, v) => {
+        state.currentPostDetailId = v;
+    }, 
+
+    /**
      * param style: v = {postType: ..., data: ...,}
      */
     addPostHeading: (state, v) => {
-        Vue.set(state.postHeadings, v.postType, v.data);
+        Vue.set(state.posts, v.postType, v.data);
     }, 
 
     /**
      * param style: v = {postId: ..., postContent: ...,}
      */
     addPostContent: (state, v) => {
-        Vue.set(state.postHeadings[state.currentPostPage], v.postType, v.data);
+        Vue.set(state.posts[state.currentPostPage][v.postId], 'postContent', v.postContent);
     }, 
     setCurrentPostPage: (state, v) => {
         state.currentPostPage = v;
+        state.isInPostHeading = v;
+    }, 
+    isInCurrentPostPage: (state, v) => {
+        state.isInPostHeading = v;
     }, 
     setPostBtnVisibility: (state, v) => {
         state.showPostBtn = v;

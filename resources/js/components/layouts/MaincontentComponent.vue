@@ -1,7 +1,7 @@
 <template>
   <b-col sm="12" md="9" lg="10" class="main-content-ctn">
     <div class="heading mb-10">
-      <h2>{{$store.state.client_config.page_title}}</h2>
+      <h2>{{page_title}}</h2>
       <div>
         <span v-for="(item, index) in $store.state.client_config.breadcrumb" :key="index">
           <span v-if="index + 1 != $store.state.client_config.breadcrumb.length">{{ item.name }} > </span>
@@ -17,23 +17,31 @@
       <PostComposer v-if="$store.state.posts.showPostCompose"></PostComposer>
     </div>
 
-    <PostHeading v-if="$store.state.posts.currentPostPage !== ''"></PostHeading>
+    <PostHeading v-if="$store.state.posts.isInPostHeading !== ''"></PostHeading>
+    <PostDetail v-if="$store.state.posts.currentPostDetailId !== ''"></PostDetail>
   </b-col>
 </template>
 
 <script>
 import PostComposer from "../contents/PostComposeComponent";
 import PostHeading from "../contents/PostHeadingComponent";
+import PostDetail from "../contents/PostDetailComponent";
 export default {
   name: "layoutMaincontent",
   components: {
     PostComposer,
-    PostHeading
+    PostHeading,
+    PostDetail,
   },
   data: function() {
     return {
-      showPostCompose: false
+      showPostCompose: false,
     };
+  },
+  computed: {
+    page_title: function () {
+      return this.$store.state.client_config.page_title;
+    }
   },
   methods: {
     composerView: function() {
