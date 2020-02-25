@@ -40,6 +40,7 @@ export default {
       });
       this.$store.commit("changePageTitle", name);
       this.$store.commit("setCurrentPostPage", postType);
+      this.$store.commit("isInPostDetail", '');
 
       if(this.$store.state.posts.posts[postType]){
         return;

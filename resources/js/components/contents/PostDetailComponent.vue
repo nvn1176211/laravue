@@ -14,7 +14,7 @@ export default {
     };
   },
   created: function(){
-    this.$store.commit("isInCurrentPostPage", '');
+    this.$store.commit("isInPostHeading", '');
   }
 };
 </script>

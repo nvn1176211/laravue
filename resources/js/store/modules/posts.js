@@ -1,6 +1,7 @@
 const state = {
     isInPostHeading: '',
     currentPostPage: '',
+    isInPostDetail: '',
     currentPostDetailId: '',
     posts: {},
     showPostBtn: false,
@@ -13,6 +14,14 @@ const mutations = {
      */
     changeCurrentPostDetailId: (state, v) => {
         state.currentPostDetailId = v;
+        state.isInPostDetail = v;
+    }, 
+
+    /**
+     * param style: v = primitive value
+     */
+    isInPostDetail: (state, v) => {
+        state.isInPostDetail = v;
     }, 
 
     /**
@@ -32,7 +41,7 @@ const mutations = {
         state.currentPostPage = v;
         state.isInPostHeading = v;
     }, 
-    isInCurrentPostPage: (state, v) => {
+    isInPostHeading: (state, v) => {
         state.isInPostHeading = v;
     }, 
     setPostBtnVisibility: (state, v) => {

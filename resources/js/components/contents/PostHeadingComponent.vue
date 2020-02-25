@@ -35,6 +35,10 @@ export default {
   },
   methods: {
     toDetail: function(postId) {
+      this.$store.commit('changeCurrentPostDetailId', postId);
+      if(this.$store.state.posts.posts[this.$store.state.posts.currentPostPage][this.$store.state.posts.currentPostDetailId]['postContent']){
+        return;
+      }
       axios({
         method: "post",
         url:
@@ -45,7 +49,6 @@ export default {
       })
         .then(response => {
           let postDetail = response.data.content;
-          this.$store.commit('changeCurrentPostDetailId', postId);
           this.$store.commit('addPostContent', {
             postId: postId,
             postContent: postDetail,

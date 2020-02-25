@@ -18,7 +18,7 @@
     </div>
 
     <PostHeading v-if="$store.state.posts.isInPostHeading !== ''"></PostHeading>
-    <PostDetail v-if="$store.state.posts.currentPostDetailId !== ''"></PostDetail>
+    <PostDetail v-if="$store.state.posts.isInPostDetail !== ''"></PostDetail>
   </b-col>
 </template>
 
