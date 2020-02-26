@@ -53,6 +53,12 @@ export default {
             postId: postId,
             postContent: postDetail,
           });
+          this.$store.commit("changePageTitle", this.$store.state.posts.posts[this.$store.state.posts.currentPostPage][this.$store.state.posts.currentPostDetailId]['heading']);
+          this.$store.commit("addBreadcrumb", {
+            name: 'Post Detail',
+            url: '#',
+            clear: false
+          });
         })
         .catch(error => {
           console.log(error); // eslint-disable-line no-console

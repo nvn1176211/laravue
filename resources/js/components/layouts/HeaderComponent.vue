@@ -37,6 +37,7 @@ export default {
         this.$store.commit('setPostBtnVisibility', true);
         this.$store.commit('setPostComposeVisibility', false);
         this.$store.commit("setCurrentPostPage", '');
+        this.$store.commit("isInPostDetail", '');
       }
     }
   }
