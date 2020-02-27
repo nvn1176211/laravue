@@ -9,7 +9,11 @@ use App\Constants;
 
 class PostController extends Controller
 {
-    public function create(Post $request){
+    // public function create(Post $request){
+    public function create(Request $request){
+        dd($request->hasFile('headingImg'));
+        // dd($request->request);
+        
         DB::table('posts')->insert([
             [
                 'type_id' => $request->postType,

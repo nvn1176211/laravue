@@ -5,15 +5,13 @@
         <b-form-select-option :value="null" disabled>-- Post Type --</b-form-select-option>
       </template>
     </b-form-select>
-    <b-form-input v-model="postHeading" placeholder="-- Post Heading --" class="mb-15"></b-form-input>
     <b-form-file
       v-model="headingImg"
-      accept="image/*"
-      :state="Boolean(file)"
-      placeholder="Choose a image file or drop it here..."
-      drop-placeholder="Drop image file here..."
+      name="headingImg"
+      placeholder="Choose a file image or drop it here..."
+      drop-placeholder="Drop file image here..."
     ></b-form-file>
-    <div class="mt-3">Selected file: {{ file ? file.name : '' }}</div>
+    <b-form-input v-model="postHeading" placeholder="-- Post Heading --" class="mb-15 mt-15"></b-form-input>
     <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
     <button type="button" @click="submit" class="btn btn-primary mt-15">Submit</button>
     <button type="button" @click="reset" class="btn btn-danger mt-15">Reset</button>
@@ -31,7 +29,7 @@ export default {
   },
   data: function() {
     return {
-      headingImg: "",
+      headingImg: '',
       overallError: "",
       postHeadingError: "",
       postContentError: "",
@@ -56,7 +54,8 @@ export default {
         data: {
           postType: this.postType,
           postHeading: this.postHeading,
-          postContent: this.editorData
+          postContent: this.editorData,
+          headingImg: this.headingImg,
         }
       })
         .then(function(response) {
@@ -78,10 +77,10 @@ export default {
         });
     },
     reset: function() {
-      this.postHeading = '';
+      this.postHeading = "";
       this.postType = null;
-      this.editorData = '<p>Content of the editor.</p>';
-    }
+      this.editorData = "<p>Content of the editor.</p>";
+    },
   },
   created: function() {
     axios({
