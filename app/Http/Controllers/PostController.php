@@ -11,7 +11,8 @@ class PostController extends Controller
 {
     // public function create(Post $request){
     public function create(Request $request){
-        dd($request->hasFile('headingImg'));
+        dd($request->headingImg);
+        // dd($request->hasFile('headingImg'));
         // dd($request->request);
         
         DB::table('posts')->insert([

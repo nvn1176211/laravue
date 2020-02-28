@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form action="http://localhost:8080/laravue/public/post/create" method="post">
+    <form action="http://localhost:8080/laravue/public/post/create" method="post" enctype="multipart/form-data">
     <input type="hidden" name="_token" :value="csrf">
     <input type="file" name="headingImg">
     <button>submit</button>
@@ -54,16 +54,15 @@ export default {
   },
   methods: {
     submit: function() {
-      console.log(this.headingImg);
+      let formData = new FormData();
+      formData.append('postType', this.postType);
+      formData.append('postHeading', this.postHeading);
+      formData.append('postContent', this.postContent);
+      formData.append('headingImg', this.headingImg);
       axios({
         method: "post",
         url: this.$store.state.client_config.baseApiUrl + "post/create",
-        data: {
-          postType: this.postType,
-          postHeading: this.postHeading,
-          postContent: this.editorData,
-          headingImg: this.headingImg,
-        }
+        data: formData,
       })
         .then(function(response) {
           console.log(response); // eslint-disable-line no-console
