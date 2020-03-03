@@ -1,10 +1,5 @@
 <template>
   <div>
-    <form action="http://localhost:8080/laravue/public/post/create" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="_token" :value="csrf">
-    <input type="file" name="headingImg">
-    <button>submit</button>
-    </form>
     <b-form-select v-model="postType" :options="postTypes" class="mb-15">
       <template v-slot:first>
         <b-form-select-option :value="null" disabled>-- Post Type --</b-form-select-option>

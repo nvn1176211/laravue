@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     // public function create(Post $request){
     public function create(Request $request){
-        dd($request->headingImg);
+        dd(base64_encode(file_get_contents($request->file('headingImg')->path())) , $request->file('headingImg'));
         // dd($request->hasFile('headingImg'));
         // dd($request->request);
         
