@@ -9,17 +9,19 @@ use App\Constants;
 
 class PostController extends Controller
 {
-    // public function create(Post $request){
-    public function create(Request $request){
-        dd(base64_encode(file_get_contents($request->file('headingImg')->path())) , $request->file('headingImg'));
-        // dd($request->hasFile('headingImg'));
-        // dd($request->request);
-        
+    public function create(Post $request){
+    // public function create(Request $request){
+        if ($request->hasFile('avatar')) {
+            $file = $request->headingImg;
+            $name = md5(time()) . '_' . $file->getClientOriginalName();
+            $file->move(public_path('images/upload'), $name);
+        }
         DB::table('posts')->insert([
             [
                 'type_id' => $request->postType,
                 'heading' => $request->postHeading,
                 'content' => $request->postContent,
+                'heading_img_url' => 'images/upload'.$name,
                 'created_at' => date(Constants::F1_DATETIME),
             ],
         ]);

@@ -1,5 +1,5 @@
 const state = {
-    baseApiUrl: 'http://localhost:8080/laravue/public/',
+    baseApiUrl: 'http://localhost:90/laravue/public/',
     page_title: 'Home',
     breadcrumb: [
         {
