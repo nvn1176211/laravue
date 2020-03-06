@@ -1,20 +1,22 @@
 <template>
   <div @click="closeSearchResult1" v-on:keyup.esc="closeSearchResult2">
-    <layoutHeader v-if="!$store.state.client_config.isLandingPage" />
-    <headerLandingPage v-else />
+    <!-- <layoutHeader v-if="!$store.state.client_config.isLandingPage" />
+    <headerLandingPage v-else /> -->
+    <headerLandingPage />
+
     <middle />
     <layoutFooter />
   </div>
 </template>
 
 <script>
-import layoutHeader from "./components/layouts/HeaderComponent";
+// import layoutHeader from "./components/layouts/HeaderComponent";
 import headerLandingPage from "./components/layouts/HeaderLandingPageComponent";
 import middle from "./components/layouts/MiddleComponent";
 import layoutFooter from "./components/layouts/FooterComponent";
 export default {
   components: {
-    layoutHeader,
+    // layoutHeader,
     middle,
     layoutFooter,
     headerLandingPage

@@ -1,7 +1,9 @@
 <template>
   <b-navbar type="light" variant="light" class="header-nav-1">
     <b-navbar-nav class="ml-auto">
+      <b-nav-item href="#">All Question</b-nav-item>
       <b-nav-item href="#" v-b-modal.modal-login>Login</b-nav-item>
+
       <b-modal id="modal-login" title="Login">
         <b-form ref="loginForm">
           <b-form-group label="Username:">

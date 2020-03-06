@@ -1,6 +1,12 @@
 <template>
-  <b-col sm="12" md="9" lg="10" class="main-content-ctn">
-    <div class="heading mb-10">
+  <div>
+    <div>
+      <b-form-input></b-form-input>
+      
+    </div>
+  </div>
+  <!-- <b-col sm="12" md="9" lg="10" class="main-content-ctn"> -->
+    <!-- <div class="heading mb-10">
       <h2>{{page_title}}</h2>
       <div>
         <span v-for="(item, index) in $store.state.client_config.breadcrumb" :key="index">
@@ -8,30 +14,30 @@
           <span v-else>{{ item.name }}</span>
         </span>
       </div>
-    </div>
+    </div> -->
 
-    <div v-if="$store.state.client_config.page_title == 'Post'">
+    <!-- <div v-if="$store.state.client_config.page_title == 'Post'">
       <div>
         <button class="btn btn-primary" v-on:click="hiddenPostBtn" v-if="$store.state.posts.showPostBtn">New Post</button>
       </div>
       <PostComposer v-if="$store.state.posts.showPostCompose"></PostComposer>
-    </div>
+    </div> -->
 
-    <PostHeading v-if="$store.state.posts.isInPostHeading !== ''"></PostHeading>
-    <PostDetail v-if="$store.state.posts.isInPostDetail !== ''"></PostDetail>
-  </b-col>
+    <!-- <PostHeading v-if="$store.state.posts.isInPostHeading !== ''"></PostHeading>
+    <PostDetail v-if="$store.state.posts.isInPostDetail !== ''"></PostDetail> -->
+  <!-- </b-col> -->
 </template>
 
 <script>
-import PostComposer from "../contents/PostComposeComponent";
-import PostHeading from "../contents/PostHeadingComponent";
-import PostDetail from "../contents/PostDetailComponent";
+// import PostComposer from "../contents/PostComposeComponent";
+// import PostHeading from "../contents/PostHeadingComponent";
+// import PostDetail from "../contents/PostDetailComponent";
 export default {
   name: "layoutMaincontent",
   components: {
-    PostComposer,
-    PostHeading,
-    PostDetail,
+    // PostComposer,
+    // PostHeading,
+    // PostDetail,
   },
   data: function() {
     return {

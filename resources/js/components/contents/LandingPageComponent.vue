@@ -1,15 +1,23 @@
 <template>
-  <div>
-    <p class="lp-ia" :style="lpiaStyle">I&nbsp; AM</p>
-    <div class="test-ctn-1" :style="testCtn1">
-      <div class="nvn-block-1" :style="nvnBlock1"></div>
-      <div class="nvn-block-1" :style="nvnBlock2"></div>
-      <div class="nvn-block-1" :style="nvnBlock3"></div>
-      <div class="nvn-block-1" :style="nvnBlock4"></div>
-      <div class="nvn-block-1" :style="nvnBlock5"></div>
-      <div class="nvn-block-1" :style="nvnBlock6"></div>
-      <div class="nvn-block-1" :style="nvnBlock7"></div>
-      <div class="nvn-block-1" :style="nvnBlock8"></div>
+  <div class="mt-10vh">
+    <div class="text-heading-1">
+      Ask Me Why
+    </div>  
+    <div class="input-heading-1">
+      <b-form-input></b-form-input>
+    </div>  
+    <div style="display: none">
+      <p class="lp-ia" :style="lpiaStyle">I&nbsp; AM</p>
+      <div class="test-ctn-1" :style="testCtn1">
+        <div class="nvn-block-1" :style="nvnBlock1"></div>
+        <div class="nvn-block-1" :style="nvnBlock2"></div>
+        <div class="nvn-block-1" :style="nvnBlock3"></div>
+        <div class="nvn-block-1" :style="nvnBlock4"></div>
+        <div class="nvn-block-1" :style="nvnBlock5"></div>
+        <div class="nvn-block-1" :style="nvnBlock6"></div>
+        <div class="nvn-block-1" :style="nvnBlock7"></div>
+        <div class="nvn-block-1" :style="nvnBlock8"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -68,6 +76,18 @@ export default {
 </script>
 
 <style scoped>
+  .text-heading-1{
+    text-align: center;
+    color: green;
+    font-weight: bold;
+    font-size: 5vw;
+  }
+
+  div.input-heading-1{
+    width: 80vw;
+    margin: auto;
+  }
+
 .nvn-block-1 {
   display: inline-block;
   width: 8vw;
