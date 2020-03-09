@@ -28,8 +28,14 @@
 .mh-100vh{
     min-height: 100vh;
 }
-.w-50{
+.w-200px{
+    width: 200px;
+}
+.w-50px{
     width: 50px;
+}
+.w-30px{
+    width: 30px;
 }
 .w-80vw{
     width: 80vw;
@@ -80,6 +86,9 @@
 // display style
 .d-none{
     display: none;
+}
+.t-ellipsis{
+    text-overflow: ellipsis;
 }
 
 
