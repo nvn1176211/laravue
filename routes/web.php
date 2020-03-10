@@ -19,10 +19,14 @@ Route::post('/images/download', 'ImagesController@download');
 
 
 Route::get('/test', function () {
-    $allTags = DB::table('SELECT tags.name FROM questions INNER JOIN tags ON tags.id = questions.tag')
-    ->join('tags', 'tags.id', '=', 'questions.tag')
-    ->select('tags.name')
-    ->get();
+    // $allTags = DB::table(DB::raw('SELECT tags.name FROM questions INNER JOIN tags ON tags.id = questions.tag'))
+    // ->select('name')
+    // ->get();
+
+    $allTags = DB::query()->fromSub(function ($query) {
+        $query->from('questions')->select('tags.name')->join('tags', 'tags.id', '=', 'questions.tag');
+    }, 'a')->get();
+    
     // $allTags = DB::table('questions')
     // ->join('tags', 'tags.id', '=', 'questions.tag')
     // ->select('tags.name')
