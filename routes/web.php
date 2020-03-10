@@ -23,14 +23,12 @@ Route::get('/test', function () {
     // ->select('name')
     // ->get();
 
-    $allTags = DB::query()->fromSub(function ($query) {
-        $query->from('questions')->select('tags.name')->join('tags', 'tags.id', '=', 'questions.tag');
-    }, 'a')->get();
+    // $allTags = DB::query()->fromSub(function ($query) {
+    //     $query->from('questions')->select('tags.name')->join('tags', 'tags.id', '=', 'questions.tag');
+    // }, 'a')->get();
     
-    // $allTags = DB::table('questions')
-    // ->join('tags', 'tags.id', '=', 'questions.tag')
-    // ->select('tags.name')
-    // ->get();
+
+
     // $allTags = DB::select(
     //     `
     //     SELECT count(*) AS total, a.name
