@@ -19,27 +19,11 @@ Route::post('/images/download', 'ImagesController@download');
 
 
 Route::get('/test', function () {
-    // $allTags = DB::table(DB::raw('SELECT tags.name FROM questions INNER JOIN tags ON tags.id = questions.tag'))
-    // ->select('name')
-    // ->get();
-
-    // $allTags = DB::query()->fromSub(function ($query) {
-    //     $query->from('questions')->select('tags.name')->join('tags', 'tags.id', '=', 'questions.tag');
-    // }, 'a')->get();
-    
-
-
-    // $allTags = DB::select(
-    //     `
-    //     SELECT count(*) AS total, a.name
-    //     FROM
-    //     (
-    //     SELECT tags.name FROM questions
-    //     INNER JOIN tags ON tags.id = questions.tag
-    //     ) a
-    //     GROUP BY a.name
-    //     `
-    // );
+    $allTags = DB::table('tags')
+    ->leftJoin('questions', 'tags.id', '=', 'questions.tag')
+    ->select('tags.id As tag_id', 'tags.name As tag_name', DB::raw("count(questions.id) As total"))
+    ->groupBy('tags.id')
+    ->get();
 dd($allTags);
 });
 
@@ -54,3 +38,5 @@ Route::post('/post/create', 'PostController@create');
 Route::get('/post/get_post_types', 'PostController@getPostTypes');
 Route::post('/post/get_post_heading', 'PostController@getPostHeading');
 Route::post('/post/detail', 'PostController@detail');
+
+Route::post('/tags/all', 'TagsController@index');
