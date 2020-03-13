@@ -12,54 +12,13 @@
       </div>
     </div>
     <div class="card-ctn">
-      <div class="card-o1" v-for="item in items" :key="item.message">
-
-      </div>
-      <div class="card-o1">
-        <span>php</span>
-        <br />
-        <p
-          class="t-ellipsis"
-        >comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment</p>
-        <div class="total-o1">
-          <span>100 questions</span>
-          <span>50 asked today, 50 this week</span>
-        </div>
-      </div>
-      <div class="card-o1">
-        <span>php</span>
-        <br />
-        <p>comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment</p>
-        <div class="total-o1">
-          <span>100 questions</span>
-          <span>50 asked today, 50 this week</span>
-        </div>
-      </div>
-      <div class="card-o1">
-        <span>php</span>
-        <br />
-        <p>comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment</p>
-        <div class="total-o1">
-          <span>100 questions</span>
-          <span>50 asked today, 50 this week</span>
-        </div>
-      </div>
-      <div class="card-o1">
-        <span>php</span>
-        <br />
-        <p>comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment</p>
-        <div class="total-o1">
-          <span>100 questions</span>
-          <span>50 asked today, 50 this week</span>
-        </div>
-      </div>
-      <div class="card-o1">
-        <span>php</span>
-        <br />
-        <p>comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment</p>
-        <div class="total-o1">
-          <span>100 questions</span>
-          <span>50 asked today, 50 this week</span>
+      <div class="card-o1" v-for="(tag, index) in allTags" :key="index">
+        <img :src="tag.img_content" alt="logo_tag" class="h150-mw300">
+        <div>
+          <p>{{tag.tag_name}}</p>
+          <div class="total-o1">
+            <span>{{tag.total}} questions</span>
+          </div>
         </div>
       </div>
     </div>
@@ -72,17 +31,37 @@ export default {
   name: "allTags",
   data: function() {
     return {
-      allTags: [],
+      allTags: []
     };
   },
   created: function() {
     axios({
       method: "post",
-      url: this.$store.state.client_config.baseApiUrl + "tags/all",
+      url: this.$store.state.client_config.baseApiUrl + "tags/all"
     })
       .then(response => {
-        console.log(response.data);
-        this.allTags = response.data;
+        let data = response.data;
+        data.forEach(element => {
+          element.img_content = '';
+        });
+        this.allTags = data;
+
+        data.forEach((value, index) => {
+          axios({
+            method: "post",
+            url: this.$store.state.client_config.baseApiUrl + "images/download",
+            data: {
+              url: value.logo_img_url
+            }
+          })
+            .then(response => {
+              value.img_content = response.data;
+              this.allTags = data;
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        });
       })
       .catch(error => {
         console.log(error); // eslint-disable-line no-console
@@ -131,13 +110,11 @@ div.card-o1 {
   margin-right: 20px;
   margin-top: 20px;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
 }
-div.card-o1 p {
-  width: 300px;
-  height: 120px;
-  overflow: hidden;
-  /* white-space: nowrap;  */
-}
+
 div.total-o1 {
   display: flex;
   justify-content: space-between;

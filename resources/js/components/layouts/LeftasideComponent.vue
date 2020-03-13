@@ -79,7 +79,7 @@ export default {
                 arr[postId].imgContent = response.data;
                 this.$store.commit("addPostHeading", {
                   postType: postType,
-                  data: arr
+                  data: arr,
                 });
               })
               .catch(error => {
