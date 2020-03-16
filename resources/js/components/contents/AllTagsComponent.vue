@@ -13,9 +13,9 @@
     </div>
     <div class="card-ctn">
       <div class="card-o1" v-for="(tag, index) in allTags" :key="index">
-        <img :src="tag.img_content" alt="logo_tag" class="h150-mw300">
+        <img :src="tag.img_content" alt="logo_tag" class="h130-mw300">
         <div>
-          <p>{{tag.tag_name}}</p>
+          <p class="mb-5px">{{tag.tag_name}}</p>
           <div class="total-o1">
             <span>{{tag.total}} questions</span>
           </div>
@@ -31,8 +31,13 @@ export default {
   name: "allTags",
   data: function() {
     return {
-      allTags: []
+      allTags: [],
     };
+  },
+  computed: {
+    filledTags: function(){
+      
+    }
   },
   created: function() {
     axios({
@@ -43,6 +48,7 @@ export default {
         let data = response.data;
         data.forEach(element => {
           element.img_content = '';
+          element.isShow = true;
         });
         this.allTags = data;
 
