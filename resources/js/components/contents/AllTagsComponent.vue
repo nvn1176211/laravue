@@ -2,7 +2,7 @@
   <div>
     <div class="head-ctn-1">
       <div class="w-200px">
-        <b-form-input placeholder="filter by tag name"></b-form-input>
+        <b-form-input placeholder="filter by tag name" v-model="filterData"></b-form-input>
       </div>
 
       <div class="bill-o1">
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="card-ctn">
-      <div class="card-o1" v-for="(tag, index) in allTags" :key="index">
+      <div class="card-o1" v-for="(tag, index) in filledTags" :key="index">
         <img :src="tag.img_content" alt="logo_tag" class="h130-mw300">
         <div>
           <p class="mb-5px">{{tag.tag_name}}</p>
@@ -32,12 +32,9 @@ export default {
   data: function() {
     return {
       allTags: [],
+      filledTags: [],
+      filterData: '',
     };
-  },
-  computed: {
-    filledTags: function(){
-      
-    }
   },
   created: function() {
     axios({
@@ -51,6 +48,7 @@ export default {
           element.isShow = true;
         });
         this.allTags = data;
+        this.filledTags = data;
 
         data.forEach((value, index) => {
           axios({
@@ -72,8 +70,20 @@ export default {
       .catch(error => {
         console.log(error); // eslint-disable-line no-console
       });
-  }
-};
+  },
+  watch: {
+    filterData: function(val){
+      let val2 = val.trim().toLocaleLowerCase();
+      if(val2 == ''){
+        this.filledTags = this.allTags;
+      }else{
+        this.filledTags = this.allTags.filter(function(item){
+          return (item.tag_name).indexOf(val2) != -1;
+        })
+      }
+    }
+  },
+}
 </script>
 
 <style scoped>
