@@ -19,7 +19,11 @@ Route::post('/images/download', 'ImagesController@download');
 
 
 Route::get('/test', function () {
-    $allTags = file_get_contents("images/upload/html_logo_256_256.png");
+    $allTags = DB::table('tags')
+    ->leftJoin('questions', 'tags.id', '=', 'questions.tag')
+    ->select('tags.id As tag_id', 'tags.name As tag_name', 'tags.logo_img_url', DB::raw("count(questions.id) As total"),  DB::raw("MAX(questions.created_at) AS latest"))
+    ->groupBy('tags.id')
+    ->get();
 dd($allTags);
 });
 

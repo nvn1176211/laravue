@@ -15,7 +15,7 @@
       <div class="card-o1" v-for="(tag, index) in filledTags" :key="index">
         <img :src="tag.img_content" alt="logo_tag" class="h130-mw300">
         <div>
-          <p class="mb-5px">{{tag.tag_name}}</p>
+          <span class="mb-5px fake-link-1">{{tag.tag_name}}</span>
           <div class="total-o1">
             <span>{{tag.total}} questions</span>
           </div>

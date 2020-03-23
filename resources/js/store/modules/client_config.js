@@ -11,6 +11,10 @@ const state = {
          
     ],
     isLandingPage: false,
+    pageInfo: {
+        isInAllTags: false,
+        isTag: true,
+    },
 }
 
 const mutations = {

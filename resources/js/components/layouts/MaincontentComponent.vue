@@ -1,6 +1,11 @@
 <template>
   <div>
-    <allTags />
+    <allTags 
+      v-if="isInAllTags"
+    />
+    <tag 
+      v-if="isTag"
+    />
   </div>
   <!-- <b-col sm="12" md="9" lg="10" class="main-content-ctn"> -->
   <!-- <div class="heading mb-10">
@@ -27,20 +32,23 @@
 
 <script>
 import allTags from "../contents/AllTagsComponent";
+import tag from "../contents/TagComponent";
 // import PostComposer from "../contents/PostComposeComponent";
 // import PostHeading from "../contents/PostHeadingComponent";
 // import PostDetail from "../contents/PostDetailComponent";
 export default {
   name: "layoutMaincontent",
   components: {
-    allTags
+    allTags,
+    tag,
     // PostComposer,
     // PostHeading,
     // PostDetail,
   },
   data: function() {
     return {
-      showPostCompose: false
+      isInAllTags: this.$store.state.client_config.pageInfo.isInAllTags,
+      isTag: this.$store.state.client_config.pageInfo.isTag,
     };
   },
   computed: {
