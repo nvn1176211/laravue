@@ -19,12 +19,24 @@ Route::post('/images/download', 'ImagesController@download');
 
 
 Route::get('/test', function () {
-    $allTags = DB::table('tags')
-    ->leftJoin('questions', 'tags.id', '=', 'questions.tag')
-    ->select('tags.id As tag_id', 'tags.name As tag_name', 'tags.logo_img_url', DB::raw("count(questions.id) As total"),  DB::raw("MAX(questions.created_at) AS latest"))
-    ->groupBy('tags.id')
-    ->get();
-dd($allTags);
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "https://www.youtube.com/feed/trending");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    // dd($ch);
+
+    $res = curl_exec($ch);
+
+    // dd(stripos($res, '<body') );
+    $startIndex = stripos($res, '<body');
+    $endtIndex = strripos($res, '/body>');
+    dd(substr($res, $startIndex));
+    
+    
+    // echo $res;die;
+    dd($res);
+    // dd($ch);
+
 });
 
 Route::get('/', function () {
